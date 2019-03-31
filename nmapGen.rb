@@ -10,7 +10,8 @@ class NMapHandler
   def initialize(osFingerprint, target, ports)
     @osFingerprint = osFingerprint
     @target = target
-    ports.kind_of?(Array) ? @ports = ports : (raise ArgumentError, "Port list must be specified as array. [80, 8080] as an example")
+    ports.kind_of?(Array) ? @ports = ports : (ports == -1 ? @ports = -1 :(raise ArgumentError, "Port list must be specified as array. [80, 8080] as an example"))
+    puts "#{@ports}"
   end
 
   def scan
